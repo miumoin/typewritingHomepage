@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
+import Header from "@/components/shared/header";
+import Footer from "@/components/shared/footer";
 import React from "react";
 import { Providers } from "@/components/providers";
-import Script from "next/script";
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import MobileNav from "@/components/shared/mobile-nav";
 
 // Site metadata constants
 const SITE_TITLE = 'Typewriting - Chatbot that replaces forms';
@@ -170,6 +170,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <MobileNav/>
         </Providers>
       </body>
     </html>
