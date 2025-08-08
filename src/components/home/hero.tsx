@@ -70,14 +70,15 @@ const Hero = () => {
 
             {/* ProductHunt Badge and Demo Button */}
             <div className="h-fit flex items-center justify-center gap-3 md:gap-6">
-              <ProductHuntBadge />
-
               <Link
                 className={cn(buttonVariants({ size: "lg" }), "group")}
                 href="https://calendly.com/uddinmoin/typewriting">
                 <span>Request a Demo</span>
                 <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
+
+              {/* product hunt badge */}
+              <ProductHuntBadge />
             </div>
 
             {/* Stats or additional info */}

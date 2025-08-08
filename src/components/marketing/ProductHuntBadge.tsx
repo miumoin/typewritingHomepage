@@ -19,7 +19,7 @@ export default function ProductHuntBadge() {
   if (!isMounted || !imgSrc) {
     return (
       <div 
-        className="w-[250px] h-[56px] rounded-lg animate-pulse"
+        className="w-fit sm:w-[200px] md:w-[250px] h-[42px] sm:h-[50px] md:h-[58px] rounded-lg animate-pulse"
         aria-label="Loading Product Hunt badge"
       />
     );
@@ -30,15 +30,15 @@ export default function ProductHuntBadge() {
       href={badgeUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block hover:opacity-90 transform transition-transform duration-500 hover:scale-105"
+      className="inline-block hover:opacity-90 transform transition-transform duration-500 scale-100 hover:scale-105"
       aria-label="Check out Typewriting AI on Product Hunt"
     >
       <Image
         src={imgSrc}
         alt="Typewriting AI - Chatbot that replaces forms | Product Hunt"
         width={250}
-        height={56}
-        className='w-fit sm:w-[200px] md:w-[250px] h-[42px] sm:h-[50px] md:h-[58px]'
+        height={60}
+        className='w-fit h-[42px] sm:h-[50px] md:h-[60px]'
         priority
         unoptimized // Product Hunt's SVG doesn't work well with Next.js Image optimization
       />
