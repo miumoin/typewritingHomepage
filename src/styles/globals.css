@@ -51,9 +51,10 @@
 body {
   color: rgb(var(--tpr-text-default));
   background: rgb(var(--tpr-white));
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: "kern", "liga", "clig", "calt";
   text-rendering: optimizeLegibility;
   line-height: 1.6;
   font-size: 1rem;
@@ -63,24 +64,34 @@ body {
 /* Typography System */
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
   }
 
   /* .primary{
     @apply bg-[#2382fc] hover:bg-[#0b71e6]
   } */
 
-  .gradient-text{
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600;
   }
 
-  .section-desc{
-    @apply text-lg md:text-xl text-gray-600 
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
   }
-  
+
+  .section-desc {
+    @apply sm:text-lg md:text-xl text-gray-600;
+  }
+
   /* Headings */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: inherit;
     font-weight: 600;
     line-height: 1.2;
@@ -88,54 +99,57 @@ body {
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
-  
-  h1 { 
+
+  h1 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
   }
-  
-  h2 { 
+
+  h2 {
     font-size: 2rem;
     margin-bottom: 1.25rem;
   }
-  
-  h3 { 
+
+  h3 {
     font-size: 1.75rem;
     margin-bottom: 1rem;
   }
-  
-  h4 { 
+
+  h4 {
     font-size: 1.5rem;
     margin-bottom: 0.875rem;
   }
-  
-  h5 { 
+
+  h5 {
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
   }
-  
-  h6 { 
-    font-size: 1rem; 
+
+  h6 {
+    font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
   }
-  
+
   /* Paragraphs */
-  p {
+  /* p {
     margin-top: 2rem;
     margin-bottom: 1rem;
     line-height: 1.6;
-  }
-  
+  } */
+
   /* Code */
-  code, pre, kbd, samp {
+  code,
+  pre,
+  kbd,
+  samp {
     font-family: var(--font-mono);
     font-size: 0.9rem;
     background: rgba(var(--tpr-gray), 0.2);
     padding: 0.2rem 0.4rem;
     letter-spacing: -0.00625rem;
   }
-  
+
   pre {
     padding: 1rem;
     overflow-x: auto;
@@ -199,51 +213,109 @@ body {
 }
 
 @keyframes cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes type {
-  0% { width: 0; }
-  5%, 10% { width: 1ch; }
-  15%, 20% { width: 2ch; }
-  25%, 30% { width: 3ch; }
-  35%, 40% { width: 4ch; }
-  45%, 50% { width: 5ch; }
-  55%, 60% { width: 6ch; }
-  65%, 70% { width: 7ch; }
-  75%, 80% { width: 8ch; }
-  85%, 90% { width: 9ch; }
-  95% { width: 10ch; }
+  0% {
+    width: 0;
+  }
+  5%,
+  10% {
+    width: 1ch;
+  }
+  15%,
+  20% {
+    width: 2ch;
+  }
+  25%,
+  30% {
+    width: 3ch;
+  }
+  35%,
+  40% {
+    width: 4ch;
+  }
+  45%,
+  50% {
+    width: 5ch;
+  }
+  55%,
+  60% {
+    width: 6ch;
+  }
+  65%,
+  70% {
+    width: 7ch;
+  }
+  75%,
+  80% {
+    width: 8ch;
+  }
+  85%,
+  90% {
+    width: 9ch;
+  }
+  95% {
+    width: 10ch;
+  }
 }
 
 /* Floating blob animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* Grid background pattern */
 .bg-grid-slate-100 {
   --grid-color: rgb(203 213 225);
   --grid-size: 2.5rem;
-  
-  background-image: 
-    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+
+  background-image: linear-gradient(
+      to right,
+      var(--grid-color) 1px,
+      transparent 1px
+    ),
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
   background-position: -1px -1px;
   opacity: 0.15;
-  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 70%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 70%, transparent 100%);
-  
+  mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.5) 70%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.5) 70%,
+    transparent 100%
+  );
+
   /* Subtle animation */
   animation: grid-pulse 20s infinite alternate;
 }
 
 @keyframes grid-pulse {
-  0% { opacity: 0.1; }
-  100% { opacity: 0.2; }
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 
 /* Smooth scrolling */
@@ -268,16 +340,17 @@ html {
 
 /* Blob background animations */
 @keyframes blob-float {
-  0%, 100% { 
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
-  25% { 
+  25% {
     transform: translate(5%, 5%) scale(1.05);
   }
-  50% { 
+  50% {
     transform: translate(0, 10%) scale(0.95);
   }
-  75% { 
+  75% {
     transform: translate(-5%, 5%) scale(1.05);
   }
 }

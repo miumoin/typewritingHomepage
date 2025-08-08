@@ -16,8 +16,8 @@ export default function Home() {
       {/*<Testimonials />*/}
       {/*keeping this section hidden for now. will use this portion later. */}
       {/*<Pricing /> */}
-      <CTA />
       <FAQ />
+      <CTA />
     </div>
   );
 }

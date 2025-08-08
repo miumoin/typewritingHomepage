@@ -10,8 +10,8 @@ const SectionHeader = ({
   desc: string;
 }) => {
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text sm:text-gray-900 leading-tight">
+    <div className="space-y-4 md:space-y-6">
+      <h1 className="max-sm:max-w-sm mx-auto section-title gradient-text sm:text-gray-900 leading-tight">
         <span>{title}</span>{" "}
         <span className="sm:block gradient-text">{subTitle}</span>
       </h1>

@@ -146,7 +146,7 @@ const Features: React.FC = () => {
             className="w-full"
             plugins={[
               Autoplay({
-                delay: 2000,
+                delay: 3000,
                 stopOnInteraction: false,
                 stopOnMouseEnter: false,
               }),
@@ -165,7 +165,7 @@ const Features: React.FC = () => {
                     <div className="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                       {/* Image Section */}
                       <div
-                        className="relative h-96 overflow-hidden cursor-pointer"
+                        className="relative h-60 md:h-96 overflow-hidden cursor-pointer"
                         onClick={() => handleImageClick(feature)}>
                         <Image
                           src={feature.image}
@@ -201,12 +201,12 @@ const Features: React.FC = () => {
                       </div>
 
                       {/* Content Section */}
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      <div className="p-2 md:p-6">
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                           {feature.title}
                         </h3>
 
-                        <p className="text-gray-600 mb-4 leading-relaxed">
+                        <p className="mt-0 text-gray-600 mb-4 leading-relaxed">
                           {feature.description}
                         </p>
 
