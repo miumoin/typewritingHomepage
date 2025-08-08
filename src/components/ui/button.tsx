@@ -1,64 +1,58 @@
-"use client";
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
 
-import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils"
 
-// Notion-inspired button variants using class-variance-authority
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-white transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
   {
     variants: {
       variant: {
-        // Notion's blue accent color for primary
-        primary: "bg-[#2382fc] hover:bg-[#0b71e6] text-white border border-[#2382fc]",
-        // Secondary (outline) style with hover effect
-        secondary: "bg-white hover:bg-gray-50 text-gray-900 border border-gray-300",
-        // Subtle text-only style
-        subtle: "bg-transparent hover:bg-gray-100 text-gray-700",
-        // Destructive action style
-        destructive: "bg-red-600 hover:bg-red-700 text-white",
+        default: "bg-[#2382fc] text-white hover:bg-transparent hover:text-[#0b71e6] border border-[#2382fc] dark:bg-ghost dark:text-primary dark:hover:bg-primary/60",
+        secondary:
+          "bg-transparent text-primary hover:bg-primary/10 border border-primary dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+        dark:
+          "bg-dark text-primary hover:bg-dark/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
+        destructive:
+          "bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
+        outline:
+          "border border-slate-200 bg-white text-dark hover:bg-slate-100 hover:text-primary dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+        ghost: "border border-ghost bg-ghost hover:bg-transparent text-primary hover:text-ghost dark:hover:bg-slate-800 dark:hover:text-slate-50",
+        link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
       },
       size: {
-        xs: "px-2.5 py-1.5 text-xs",
-        sm: "px-3 py-2 text-sm",
-        md: "px-4 py-2 text-sm",
-        lg: "px-5 py-2.5 text-base",
-        xl: "px-6 py-3 text-base",
-      },
-      fullWidth: {
-        true: "w-full",
-        false: "",
+        default: "md:h-11 sm:h-10 h-9 px-4 md:text-[15px] text-[13px]",
+        sm: "h-9 px-3 text-xs",
+        lg: "h-10 sm:h-12 md:h-14 px-3 md:px-8 md:text-[15px] text-[13px]",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
-      variant: "primary",
-      size: "md",
-      fullWidth: false,
+      variant: "default",
+      size: "default",
     },
   }
-);
+)
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  children: React.ReactNode;
+  asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, fullWidth, children, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
     return (
-      <button
-        className={cn(buttonVariants({ variant, size, fullWidth, className }))}
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      >
-        {children}
-      </button>
-    );
+      />
+    )
   }
-);
+)
+Button.displayName = "Button"
 
-Button.displayName = "Button";
-
-export { Button, buttonVariants };
+export { Button, buttonVariants }

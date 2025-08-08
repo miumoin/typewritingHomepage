@@ -28,8 +28,6 @@ const CTA = () => {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             {/* Primary button - solid */}
             <Button
-              variant="primary"
-              size="xl"
               onClick={() => scrollToSection('features')}
             >
               Get started for free
@@ -38,7 +36,7 @@ const CTA = () => {
             {/* Secondary button - outline */}
             <Button
               variant="secondary"
-              size="xl"
+              
               onClick={() => scrollToSection('pricing')}
             >
               View pricing plans

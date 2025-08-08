@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowRight, FiCalendar } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FiArrowRight } from "react-icons/fi";
 import { navItems } from "@/lib/nav-items";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
 import { Exo_2 } from "next/font/google";
+import { buttonVariants } from "../ui/button";
 
 const exo2 = Exo_2({
   subsets: ["latin"],
