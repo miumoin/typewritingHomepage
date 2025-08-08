@@ -1,45 +1,40 @@
 "use client";
 
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import {FiArrowRight, FiCalendar} from "react-icons/fi";
+import { FiArrowRight, FiCalendar } from "react-icons/fi";
+import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import React from "react";
+import { cn } from "@/lib/utils";
+import { CreditCard, Gift, XCircle } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="relative overflow-hidden bg-[#2382fc] text-white py-32 my-20" id="cta">
-    {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-300 rounded-full filter blur-3xl"></div>
-      </div>
+    <section
+      className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 text-white  py-16 md:py-24"
+      id="cta">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Ready to Transform Your Business
-            <span className="block text-blue-100 mt-2">with AI-Powered Assistant?</span>
+        <div className="text-center">
+          <h2 className="section-title leading-tight max-w-5xl mx-auto">
+            Ready to Transform Your Business with AI-Powered Assistant?
           </h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
-            Join thousands of forward-thinking companies that are already enhancing their customer experience
-            and boosting efficiency with our AI assistant platform.
+          <p className="section-desc text-blue-100 mb-8 md:mb-12 max-w-3xl mx-auto">
+            Join thousands of forward-thinking companies that are already
+            enhancing their customer experience and boosting efficiency with our
+            AI assistant platform.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+          <div className="flex items-center justify-center gap-3 md:gap-6">
             <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-            >
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}>
               <Link
                 href="https://ask.typewriting.ai/login"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 text-lg font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
+                className={cn(
+                  buttonVariants({ variant: "secondary", size: "lg" })
+                )}>
                 Start Free
                 <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -48,12 +43,12 @@ const CTA = () => {
             <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-            >
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}>
               <Link
                 href="https://calendly.com/uddinmoin/typewriting"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/50 text-white text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
-              >
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "lg" })
+                )}>
                 Request a Demo
                 <FiCalendar className="ml-2" />
               </Link>
@@ -70,89 +65,28 @@ const CTA = () => {
           </div>
 
           <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-            <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-blue-100 mr-2"
-              >
-                <path
-                  d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M7.5 10l1.667 1.667L13.333 8.333"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-white text-sm font-medium">No credit card required</span>
-            </div>
+            <Badge
+              variant="secondary"
+              className="bg-white/10 text-white border-white/20">
+              <CreditCard className="mr-2 w-4 h-4" />
+              No credit card required
+            </Badge>
 
-            <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-blue-100 mr-2"
-              >
-                <path
-                  d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M7.5 10l1.667 1.667L13.333 8.333"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-white text-sm font-medium">Always free for limited assistant</span>
-            </div>
+            <Badge
+              variant="secondary"
+              className="bg-white/10 text-white border-white/20">
+              <Gift className="mr-2 w-4 h-4" />
+              Always free for limited assistant
+            </Badge>
 
-            <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-blue-100 mr-2"
-              >
-                <path
-                  d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M7.5 10l1.667 1.667L13.333 8.333"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-white text-sm font-medium">Cancel anytime</span>
-            </div>
+            <Badge
+              variant="secondary"
+              className="bg-white/10 text-white border-white/20">
+              <XCircle className="mr-2 w-4 h-4" />
+              Cancel anytime
+            </Badge>
           </div>
-
-        </motion.div>
+        </div>
       </div>
     </section>
   );

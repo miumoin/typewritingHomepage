@@ -56,7 +56,7 @@ const MobileNav = () => {
                   }`}
                 />
                 <span
-                  className={`text-xs ${
+                  className={`text-xs text-center ${
                     isActive ? "text-blue-600 font-semibold" : "text-gray-600"
                   }`}>
                   {item.label}

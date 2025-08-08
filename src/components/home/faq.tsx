@@ -56,7 +56,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="relative py-24 bg-white overflow-hidden">
+    <section id="faq" className="relative py-16 md:py-24 bg-white overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-50 pointer-events-none"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-5 pointer-events-none">
@@ -71,7 +71,6 @@ const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16">
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto"></p>
           <div className="space-y-4 md:space-y-6">
             <h2 className="section-title gradient-text leading-tight">
               Frequently Asked Questions

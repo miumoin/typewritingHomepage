@@ -11,14 +11,14 @@ const buttonVariants = cva(
       variant: {
         default: "bg-gradient-to-r from-blue-600 hover:from-blue-500 to-indigo-600 hover:to-indigo-500 hover:shadow-lg text-white border border-[#2382fc] dark:bg-ghost dark:text-primary dark:hover:bg-primary/60",
         secondary:
-          "bg-transparent text-primary hover:bg-primary/10 border border-primary dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+          "bg-gray-50/20 text-white hover:bg-white/30",
         dark:
-          "bg-slate-950 text-white hover:bg-dark/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
+          "bg-slate-950 text-white hover:bg-slate-950/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
         destructive:
           "bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
         outline:
-          "border border-slate-200 bg-white text-dark hover:bg-slate-100 hover:text-primary dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        ghost: "border border-ghost bg-ghost hover:bg-transparent text-primary hover:text-ghost dark:hover:bg-slate-800 dark:hover:text-slate-50",
+          "border border-blue-600 bg-white text-dark hover:bg-slate-100 hover:text-primary",
+        ghost: "border border-white bg-white text-slate-950 hover:text-blue-600",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
       },
       size: {
