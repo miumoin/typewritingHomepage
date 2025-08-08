@@ -1,230 +1,300 @@
 "use client";
 
-import {motion} from "framer-motion";
-import {FiX} from "react-icons/fi";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
+import SectionHeader from "../shared/section-header";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  FiArrowRight,
+  FiPlay,
+  FiZap,
+  FiSettings,
+  FiMessageSquare,
+  FiFileText,
+  FiUsers,
+} from "react-icons/fi";
+import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@/lib/utils";
 
-const Features: React.FC = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-
-  // Auto-rotate features
-  const featureInterval = setInterval(() => {
-    setActiveFeature(prev => (prev + 1) % features.length);
-  }, 4000);
-  return () => {
-    clearInterval(featureInterval);
-  };
-}, []);
-
-const features = [
+// Features data constant
+const FEATURES_DATA = [
   {
-    title: "Questionnaire",
-    description: "Create customized questionnaires to gather structured information from your users and clients.",
+    id: 1,
+    title: "Smart Questionnaire",
+    description:
+      "Create intelligent, adaptive questionnaires that gather structured information from your users and clients with contextual follow-ups.",
     image: "/images/features/Questionnaire.jpg",
-    color: "from-orange-600 to-amber-500"
+    icon: FiFileText,
+    color: "from-orange-500 to-amber-500",
+    bgColor: "bg-orange-50",
+    badge: "Core Feature",
+    benefits: ["Adaptive questions", "Smart branching", "Real-time validation"],
   },
   {
-    title: "Customisation",
-    description: "Tailor the AI experience to match your brand voice, style, and specific industry requirements.",
+    id: 2,
+    title: "AI Customization",
+    description:
+      "Tailor your AI assistant's personality, tone, and expertise to match your brand voice and industry requirements perfectly.",
     image: "/images/features/customisation.jpg",
-    color: "from-purple-600 to-indigo-500"
+    icon: FiSettings,
+    color: "from-purple-500 to-indigo-500",
+    bgColor: "bg-purple-50",
+    badge: "Advanced",
+    benefits: [
+      "Brand voice matching",
+      "Industry expertise",
+      "Custom responses",
+    ],
   },
   {
+    id: 3,
     title: "Agent Settings",
-    description: "Configure your AI agents with different personalities, expertise levels, and response styles.",
+    description:
+      "Configure your AI agents with different personalities, expertise levels, and response styles for various use cases.",
     image: "/images/features/agent-settings.jpg",
-    color: "from-teal-600 to-emerald-500"
+    icon: FiZap,
+    color: "from-teal-500 to-emerald-500",
+    bgColor: "bg-teal-50",
+    badge: "Professional",
+    benefits: ["Multiple personalities", "Expertise levels", "Response styles"],
   },
   {
-    title: "Summary",
-    description: "Generate concise summaries of lengthy content, meetings, or documents with key points highlighted.",
+    id: 4,
+    title: "Smart Summaries",
+    description:
+      "Generate concise, intelligent summaries of lengthy content, meetings, or documents with key insights highlighted.",
     image: "/images/features/summary.jpg",
-    color: "from-blue-600 to-cyan-500"
+    icon: FiMessageSquare,
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-50",
+    badge: "Productivity",
+    benefits: ["Key insights", "Action items", "Meeting notes"],
   },
   {
+    id: 5,
     title: "Direct Messaging",
-    description: "Communicate directly with your AI assistant through a chat interface with real-time responses.",
+    description:
+      "Communicate directly with your AI assistant through an intuitive chat interface with real-time, contextual responses.",
     image: "/images/features/direct-messaging.jpg",
-    color: "from-rose-600 to-pink-500"
-  }
+    icon: FiUsers,
+    color: "from-rose-500 to-pink-500",
+    bgColor: "bg-rose-50",
+    badge: "Communication",
+    benefits: ["Real-time chat", "Context awareness", "Multi-modal support"],
+  },
 ];
 
+const Features: React.FC = () => {
+  const [selectedFeature, setSelectedFeature] = useState<any>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleImageClick = (feature: any) => {
+    setSelectedFeature(feature);
+    setIsDialogOpen(true);
+  };
+
+  const handleLearnMore = (feature: any) => {
+    setSelectedFeature(feature);
+    setIsDialogOpen(true);
+  };
+
   return (
-    <section className="py-20 bg-white" id="features">
+    <section
+      className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50"
+      id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto mb-20"
-        >
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Everything You Need to Build
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                  {' '}Powerful AI Assistants
-                </span>
-          </h2>
-          <p className="text-xl text-gray-600">
-            Build smart AI assistants with our easy-to-use platform.
-            Your AI will ask questions, gather information, and explain about your service or product clearly. No need human assistance.
-          </p>
+          className="text-center max-w-4xl mx-auto mb-16">
+          <SectionHeader
+            title="Everything You Need to Build"
+            subTitle="Powerful AI Assistants"
+            desc="Build intelligent AI assistants with our comprehensive platform. Your AI will ask smart questions, gather information efficiently, and explain your services clearly. No human assistance required."
+          />
         </motion.div>
 
-        {/* Feature Card Modal/Lightbox */}
-        {selectedImage && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-80" onClick={() => setSelectedImage(null)}>
-            <div className="relative max-w-5xl w-full">
-              <button
-                className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors duration-200"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedImage(null);
-                }}
-              >
-                <FiX className="w-6 h-6 text-gray-800" />
-              </button>
-              <div className="relative w-full rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src={selectedImage}
-                  alt="Feature image"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto"
-                />
+        {/* Features Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+              skipSnaps: false,
+            }}
+            className="w-full"
+            plugins={[
+              Autoplay({
+                delay: 2000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: false,
+              }),
+            ]}>
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {FEATURES_DATA.map((feature, index) => (
+                <CarouselItem
+                  key={feature.id}
+                  className="pl-2 md:pl-4 md:basis-1/2">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="group h-full">
+                    <div className="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                      {/* Image Section */}
+                      <div
+                        className="relative h-96 overflow-hidden cursor-pointer"
+                        onClick={() => handleImageClick(feature)}>
+                        <Image
+                          src={feature.image}
+                          alt={feature.title}
+                          fill
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+                        {/* Badge */}
+                        <div className="absolute top-4 left-4">
+                          <Badge
+                            variant="secondary"
+                            className={`${feature.bgColor} text-gray-700 border-0`}>
+                            {feature.badge}
+                          </Badge>
+                        </div>
+
+                        {/* Icon overlay */}
+                        <div className="absolute top-4 right-4">
+                          <div className="size-8 md:size-12 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                            <feature.icon className="size-4 md:size-6 text-blue-600" />
+                          </div>
+                        </div>
+
+                        {/* Click indicator */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-black/50 backdrop-blur-sm rounded-full p-3">
+                            <FiArrowRight className="w-6 h-6 text-white" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                          {feature.title}
+                        </h3>
+
+                        <p className="text-gray-600 mb-4 leading-relaxed">
+                          {feature.description}
+                        </p>
+
+                        {/* Benefits List */}
+                        <div className="space-y-2 mb-6">
+                          {feature.benefits.map((benefit, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-center gap-2 text-sm text-gray-500">
+                              <div
+                                className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${feature.color}`}
+                              />
+                              {benefit}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* CTA Button */}
+                        <Button
+                          className="w-full group/btn hover:bg-blue-50 border-gray-200"
+                          onClick={() => handleLearnMore(feature)}>
+                          <span>Learn More</span>
+                          <FiArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                        </Button>
+                      </div>
+
+                      {/* Hover effect overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    </div>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </motion.div>
+
+        {/* Feature Dialog */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 bg-transparent border-0 shadow-none">
+            {selectedFeature && (
+              <div className="relative w-full h-full flex items-center justify-center">
+                {/* Image */}
+                <div className="relative w-full h-full max-h-[85vh] flex items-center justify-center">
+                  <Image
+                    src={selectedFeature.image}
+                    alt={selectedFeature.title}
+                    width={1200}
+                    height={800}
+                    className="max-w-full max-h-full object-contain rounded-lg"
+                  />
+                </div>
               </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Bottom CTA Section */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16">
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Build Your AI Assistant?
+            </h3>
+            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+              Start creating intelligent, conversational AI agents that
+              transform how you interact with your customers and streamline your
+              workflows.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-white text-blue-600 hover:bg-gray-100">
+                <FiPlay className="mr-2 w-4 h-4" />
+                Watch Demo
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white/10">
+                Get Started Free
+              </Button>
             </div>
           </div>
-        )}
-
-        {/* Feature Cards Layout */}
-        <div className="space-y-10">
-          {/* Row 1: Two cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.slice(0, 2).map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  delay: index * 0.1,
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 20
-                }}
-                className="group cursor-pointer"
-                onClick={() => setSelectedImage(feature.image)}
-              >
-                <div className="bg-[rgb(34,37,42)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-8">
-                  <div className="relative w-full aspect-square mb-5">
-                    <div className="relative h-full w-full overflow-hidden rounded-lg">
-                      <Image
-                        src={feature.image}
-                        alt={feature.title}
-                        fill
-                        style={{ objectFit: 'cover', objectPosition: 'top left' }}
-                        className="transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-white">
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-white/90 leading-relaxed">{feature.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Row 2: One card */}
-          <div className="w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                delay: 0.2,
-                type: 'spring',
-                stiffness: 300,
-                damping: 20
-              }}
-              className="group cursor-pointer"
-              onClick={() => setSelectedImage(features[2].image)}
-            >
-              <div className="bg-[rgb(34,37,42)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-8">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="w-full md:w-1/2">
-                    <div className="relative aspect-square w-full">
-                      <div className="relative h-full w-full overflow-hidden rounded-lg">
-                        <Image
-                          src={features[2].image}
-                          alt={features[2].title}
-                          fill
-                          style={{ objectFit: 'cover', objectPosition: 'top left' }}
-                          className="transition-all duration-300"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full md:w-1/2 flex flex-col justify-center text-white">
-                    <h3 className="text-xl font-semibold mb-3">{features[2].title}</h3>
-                    <p className="text-white/90 leading-relaxed">{features[2].description}</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Row 3: Two cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.slice(3, 5).map((feature, index) => (
-              <motion.div
-                key={index + 3}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  delay: index * 0.1,
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 20
-                }}
-                className="group cursor-pointer"
-                onClick={() => setSelectedImage(feature.image)}
-              >
-                <div className="bg-[rgb(34,37,42)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-8">
-                  <div className="relative w-full aspect-square mb-5">
-                    <div className="relative h-full w-full overflow-hidden rounded-lg">
-                      <Image
-                        src={feature.image}
-                        alt={feature.title}
-                        fill
-                        style={{ objectFit: 'cover', objectPosition: 'top left' }}
-                        className="transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-white">
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-white/90 leading-relaxed">{feature.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
+        </motion.div> */}
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ProductHuntBadge from "@/components/marketing/ProductHuntBadge";
 import BlobBackground from "@/components/ui/BlobBackground";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +56,7 @@ const Hero = () => {
             <div className="space-y-6">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text sm:text-gray-900 leading-tight">
                 <span>Replace boring forms with</span>{" "}
-                <span className="sm:block sm:gradient-text">
+                <span className="sm:block gradient-text">
                   Conversational AI Agent
                 </span>
               </h1>

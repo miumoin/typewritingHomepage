@@ -11,10 +11,13 @@
     "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
     "canvas": "^3.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.12.1",
     "lucide": "^0.536.0",
     "lucide-react": "^0.537.0",
