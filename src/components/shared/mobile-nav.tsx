@@ -56,10 +56,17 @@ const MobileNav = () => {
                   }`}
                 />
                 <span
-                  className={`text-xs text-center ${
+                  className={`text-[10px] sm:text-xs text-center ${
                     isActive ? "text-blue-600 font-semibold" : "text-gray-600"
                   }`}>
-                  {item.label}
+                  {item?.id === "cta" ? (
+                    <>
+                      <span className="block min-[380px]:hidden">Demo Req</span>{" "}
+                      <span className="hidden min-[380px]:block">{item.label}</span>
+                    </>
+                  ) : (
+                    item.label
+                  )}
                 </span>
               </Link>
             </li>
