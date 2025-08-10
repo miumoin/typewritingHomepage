@@ -161,7 +161,7 @@ const Features: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="group h-full">
+                    className="group h-full rounded-2xl overflow-hidden">
                     <div className="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                       {/* Image Section */}
                       <div
