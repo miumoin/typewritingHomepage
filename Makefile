@@ -6,6 +6,7 @@ build-Typewriting-homepage:
 	npm run build
 	mkdir out/docs
 	cp -r /Library/WebServer/Documents/typewritingdoc/build/* /Library/WebServer/Documents/typewriting/typewriting.ai/out/docs/
+	cp typewriting-logo.jpg out/
 	cp sitemap-deploy.xml out/sitemap.xml
 	cd /Library/WebServer/Documents/typewriting/typewriting.ai/out && sed -i '' 's|/_next|./_next|g' index.html
 	cd /Library/WebServer/Documents/typewriting/typewriting.ai/out && sed -i '' 's|/_next|./_next|g' 404.html
