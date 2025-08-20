@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
     <url>
       <loc>https://typewriting.ai/</loc>
-      <lastmod>2025-08-09T07:24:02.442Z</lastmod>
+      <lastmod>2025-08-19T14:03:14.030Z</lastmod>
       <changefreq>daily</changefreq>
-      <priority>1</priority>
-    </url>
-    <url>
-      <loc>https://app002.typewriting.ai/</loc>
-      <lastmod>2025-08-09T07:24:02.442Z</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>1</priority>
-    </url>
-    <url>
-      <loc>https://app003.typewriting.ai/</loc>
-      <lastmod>2025-08-09T07:24:02.442Z</lastmod>
-      <changefreq>weekly</changefreq>
       <priority>1</priority>
     </url>
 </urlset>

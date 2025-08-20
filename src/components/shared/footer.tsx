@@ -56,7 +56,7 @@ export default function Footer() {
               {[
                 {
                   name: "Tutorial",
-                  href: "https://docs.typewriting.ai/docs/category/typewriting-ai-tutorial",
+                  href: "https://typewriting.ai/docs/docs/category/typewriting-ai-tutorial",
                   icon: <FaBook className="h-4 w-4 text-blue-500 transition-all duration-200 group-hover:scale-125" />
                 },
                 {
