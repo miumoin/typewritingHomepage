@@ -39,7 +39,7 @@ export default function Footer() {
               </div>
             </motion.div>
             <p className="text-sm text-gray-600 max-w-xs leading-relaxed">
-              Your intelligent AI assistant for building powerful conversational agents. Create smart AI assistants that ask questions, gather information, and explain about your service or product clearly.
+              AI-powered tools to enhance productivity, automate tasks, and streamline workflows for businesses of all sizes.
             </p>
             <div className="h-4" />
           </motion.div>
@@ -162,21 +162,6 @@ export default function Footer() {
             ))}
           </div>
         </motion.div>
-        
-        {/* Developer Credit */}
-        <div className="mt-12 text-center pt-6 border-t border-gray-100">
-          <p className="text-xs text-gray-500">
-            Designed & Development partner {' '}
-            <a 
-              href="https://www.mindscraft.dev/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="font-medium text-[#2382fc] transition-colors duration-200 hover:text-blue-600"
-            >
-              MindsCraft
-            </a>
-          </p>
-        </div>
       </div>
     </footer>
   );

@@ -12,13 +12,18 @@ const MobileNav = () => {
   // Update active section based on URL hash or scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.id);
+      const sections = navItems.map((item) => item.id)
+        .filter((id): id is string => Boolean(id));
+
       for (const section of sections) {
         const element = document.getElementById(section);
+      
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
+            if (section) {
+              setActiveSection(section);
+            }
             return;
           }
         }

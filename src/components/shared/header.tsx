@@ -53,8 +53,9 @@ export default function Header() {
     };
   }, [scrolled]);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId?: string) => {
     setMobileMenuOpen(false);
+    if (!sectionId) return;
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -87,8 +88,8 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex-shrink-0 z-10">
-            <button
-              onClick={() => scrollToSection("hero")}
+            <a
+              href="/"
               className="flex items-center cursor-pointer group">
               <p
                 className={cn(
@@ -100,7 +101,7 @@ export default function Header() {
                   .ai
                 </span>
               </p>
-            </button>
+            </a>
           </motion.div>
 
           {/* Navigation - Center - Notion-style */}
@@ -117,7 +118,8 @@ export default function Header() {
                   initial={{ opacity: 0, y: -0.625 }} // 10px converted to rem
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}>
-                  <button
+                  <a 
+                    href={item.href || "/#" + item.id}
                     onClick={() => scrollToSection(item.id)}
                     className={`relative px-2.5 py-0.375 text-[0.875rem] leading-[1.25rem] font-medium rounded-full transition-all duration-200 cursor-pointer ${
                       activeItem === item.id
@@ -129,7 +131,7 @@ export default function Header() {
                       paddingBottom: "0.375rem",
                     }}>
                     {item.label}
-                  </button>
+                  </a>
                 </motion.div>
               ))}
             </motion.nav>
