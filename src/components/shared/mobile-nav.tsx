@@ -50,7 +50,7 @@ const MobileNav = () => {
               key={item.id}
               className="flex flex-col items-center justify-center">
               <Link
-                href={`${item.id != undefined ? "#" + item.id : item.href}`}
+                href={`${item.id != undefined ? "/#" + item.id : item.href}`}
                 className={`flex flex-col items-center gap-1 transition-transform duration-200 hover:scale-105 active:scale-95 ${
                   isActive ? "text-blue-600" : "text-gray-600"
                 }`}
